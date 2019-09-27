@@ -64,10 +64,11 @@ services:
       DISPLAY: $DISPLAY
     network_mode: bridge
     volumes: 
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.config/ideac-rust/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
       - ~/.config/ideac-rust/.java:/home/${USERNAME}/.java
+      - ~/.config/ideac-rust/.local/share/JetBrains:/home/${USERNAME}/.local/share/JetBrains
       - ~/Documents:/home/${USERNAME}/Documents
-      - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/Documents/docker/vscode-servers/rust:/home/${USERNAME}/.vscode-server
     cap_add: 
       - SYS_PTRACE
