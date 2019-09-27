@@ -57,18 +57,6 @@ RUN echo "Installing IdeaIC${IDEAC_MINOR_VERSION}" \
     && echo "Cleaning up installer..." \
     && rm /opt/ideac/ideac.tar.gz
 
-# RUN echo "Downloading OpenJDK 7..." \
-#     && wget https://cdn.azul.com/zulu/bin/zulu7.31.0.5-ca-jdk7.0.232-linux_amd64.deb -O /tmp/openjdk7.deb \
-#     && wget https://cdn.azul.com/zulu/bin/zulu8.40.0.25-ca-jdk8.0.222-linux_amd64.deb -O /tmp/openjdk8.deb \
-#     && wget https://cdn.azul.com/zulu/bin/zulu11.33.15-ca-jdk11.0.4-linux_amd64.deb -O /tmp/openjdk11.deb
-
-# RUN echo "Installing OpenJDK7" \
-#     && apt-get update \
-#     && apt-get install -y --no-install-recommends java-common libasound2 \
-#     && dpkg -i /tmp/openjdk7.deb && rm /tmp/openjdk7.deb \
-#     && dpkg -i /tmp/openjdk11.deb && rm /tmp/openjdk11.deb \
-#     && dpkg -i /tmp/openjdk8.deb && rm /tmp/openjdk8.deb
-
 ENV DEBIAN_FRONTEND=
 
 WORKDIR /home/${USERNAME}
