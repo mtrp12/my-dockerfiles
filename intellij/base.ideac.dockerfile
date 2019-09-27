@@ -1,13 +1,19 @@
 FROM ubuntu:latest
 
+# OPENING MULTIPLE PROJECT WINDOW IN SAME CONTAINER IS NOT RECOMMENDED.
+# IF ANY OF THE WINDOW IS CLOSED OR CRASHES, WHOLE CONTAINER GOES DOWN.
+# CREATE NEW CONTAINER FOR NEW PROJECT WINDOWS USING '--scale SERVICE=no_of_instance'
+# docker-compose --scale base-ideac=3
+# FOR 3 PROJECT WINDOWS
+
 # container user config
-ARG USERNAME=dev
-ARG UID=1000
-ARG GID=${UID}
+ARG USERNAME
+ARG UID
+ARG GID
 
 # IdeaC Config
-ARG IDEAC_MAJOR_VERSION=2019.2
-ARG IDEAC_MINOR_VERSION=2019.2.3
+ARG IDEAC_MAJOR_VERSION
+ARG IDEAC_MINOR_VERSION
 
 # Download config
 ARG FONT_URL=https://api.github.com/repos/microsoft/cascadia-code/releases/latest
@@ -43,16 +49,16 @@ RUN echo "Updating apt repository list..." \
     && fc-list \
     #
     && echo "Creating IdeaC installation dir..." \
-    && mkdir /opt/ideac
-
-RUN echo "Downloading IdeaIC${IDEAC_MINOR_VERSION}..." \
-    && wget ${IDEA_URL} -O /opt/ideac/ideac.tar.gz
-
-WORKDIR /opt/ideac
-RUN echo "Installing IdeaIC${IDEAC_MINOR_VERSION}" \
-    && tar --strip-components=1 -xvf ideac.tar.gz \
+    && mkdir /opt/ideac \
+    #
+    && echo "Downloading IdeaIC${IDEAC_MINOR_VERSION}..." \
+    && wget ${IDEA_URL} -O /opt/ideac.tar.gz \
+    #
+    && echo "Installing IdeaIC${IDEAC_MINOR_VERSION}" \
+    && tar -C /opt/ideac --strip-components=1 -xvf /opt/ideac.tar.gz \
+    #
     && echo "Cleaning up installer..." \
-    && rm /opt/ideac/ideac.tar.gz
+    && rm /opt/ideac.tar.gz
 
 ENV DEBIAN_FRONTEND=
 
