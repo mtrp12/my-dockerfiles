@@ -8,9 +8,6 @@ ARG GID=${UID}
 # IdeaC Config
 ARG IDEAC_MAJOR_VERSION=2019.2
 ARG IDEAC_MINOR_VERSION=2019.2.3
-# ARG IDEAC_CONFIG_DIR=.IdeaIC${IDEAC_MAJOR_VERSION}
-
-# wget https://api.github.com/repos/microsoft/cascadia-code/releases/latest -O - | grep browser_download_url | awk '{print $2}' | xargs wget -O cascadia.ttf -q
 
 # Download config
 ARG FONT_URL=https://api.github.com/repos/microsoft/cascadia-code/releases/latest
