@@ -2,6 +2,7 @@ version: "3"
 
 services: 
 
+
   base-ideac:
     image: base-ideac:latest
     build: 
@@ -27,6 +28,7 @@ services:
     tty: true
     command: /opt/ideac/bin/idea.sh
 
+
   java-ideac:
     image: java-ideac:latest
     build:
@@ -46,4 +48,32 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
+    command: /opt/ideac/bin/idea.sh
+
+
+  rust-ideac:
+    image: rust-ideac:latest
+    build:
+      context: .
+      dockerfile: rust.ideac.dockerfile
+      args: 
+        USERNAME: $USERNAME
+    hostname: rust-ideac-1
+    user: $USERNAME
+    environment: 
+      DISPLAY: $DISPLAY
+    network_mode: bridge
+    volumes: 
+      - ~/.config/ideac-rust/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
+      - ~/.config/ideac-rust/.java:/home/${USERNAME}/.java
+      - ~/Documents:/home/${USERNAME}/Documents
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/Documents/docker/vscode-servers/rust:/home/${USERNAME}/.vscode-server
+    cap_add: 
+      - SYS_PTRACE
+    security_opt: 
+      - seccomp:unconfined
+    stdin_open: true
+    tty: true
+    working_dir: /home/${USERNAME}
     command: /opt/ideac/bin/idea.sh
