@@ -27,7 +27,7 @@ RUN echo "Updating apt repository list..." \
     && echo "Installing packages..." \
     && apt-get -y install --no-install-recommends \
     sudo wget libfontconfig1 fontconfig ca-certificates vim git openssh-client less \
-    libxext-dev libxrender-dev libxtst-dev libfreetype6-dev \
+    bash-completion libxext-dev libxrender-dev libxtst-dev libfreetype6-dev \
     #
     && echo "Adding user: ${USERNAME} ..." \
     && groupadd --gid $GID $USERNAME \
