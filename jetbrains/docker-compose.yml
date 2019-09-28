@@ -18,7 +18,7 @@ services:
     user: ${USERNAME}
     environment: 
       - DISPLAY=$DISPLAY
-    network_mode: bridge
+    network_mode: host
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
@@ -37,12 +37,13 @@ services:
     user: ${USERNAME}
     environment:
       - DISPLAY=$DISPLAY
-    network_mode: bridge
+    network_mode: host
     volumes: 
       - ~/.config/ideac-java/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
       - ~/.config/ideac-java/.java:/home/${USERNAME}/.java
       - ~/Documents:/home/${USERNAME}/Documents
       - ~/.gradle:/home/${USERNAME}/.gradle
+      - ~/.ssh:/home/${USERNAME}/.ssh
       - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
@@ -60,7 +61,7 @@ services:
     user: $USERNAME
     environment: 
       DISPLAY: $DISPLAY
-    network_mode: bridge
+    network_mode: host
     volumes: 
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.config/ideac-rust/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
