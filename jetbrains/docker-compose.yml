@@ -23,7 +23,6 @@ services:
       - ~/.config/ideac-base/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
       - ~/.config/ideac-base/.java:/home/${USERNAME}/.java
       - ~/Documents:/home/${USERNAME}/Documents
-      - ~/.gradle:/home/${USERNAME}/.gradle
       - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
@@ -46,6 +45,7 @@ services:
       - ~/.config/ideac-java/.IdeaIC${IDEAC_MAJOR_VERSION}:/home/${USERNAME}/.IdeaIC${IDEAC_MAJOR_VERSION}
       - ~/.config/ideac-java/.java:/home/${USERNAME}/.java
       - ~/Documents:/home/${USERNAME}/Documents
+      - ~/.gradle:/home/${USERNAME}/.gradle
       - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
