@@ -26,7 +26,8 @@ RUN echo "Updating apt repository list..." \
     #
     && echo "Installing packages..." \
     && apt-get -y install --no-install-recommends \
-    sudo wget libfontconfig1 fontconfig ca-certificates vim git openssh-client less \
+    sudo wget iputils-ping telnet libfontconfig1 fontconfig ca-certificates vim git \
+    openssh-client less man \
     bash-completion libxext-dev libxrender-dev libxtst-dev libfreetype6-dev \
     #
     && echo "Adding user: ${USERNAME} ..." \
